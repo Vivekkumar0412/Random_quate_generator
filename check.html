@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .con{
+            height: 500px;
+            width: 700px;
+            background: linear-gradient(#eecda3,#ef629f);
+            margin: auto;
+            margin-top:  160px; 
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+        }#bt{
+            padding: 30px 90px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(#eecda3,#ef629f);
+            cursor: pointer;
+            margin-top: 50px;
+            color: white;
+            font-size: larger;
+        }h1{
+            color: white;
+            padding: 10px 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <h1 id="ha"></h1>
+        <button id="bt">CLICK</button>
+    </div>
+
+    <script>
+        let hi = document.querySelector("#ha");
+        let btn = document.getElementById("bt");
+
+
+
+        let getquate = () => {
+            fetch('https://type.fit/api/quotes')
+                .then((q) => {
+                    return q.json();
+                    // console.log(quates)
+                }).then((quate) => {
+                    console.log(quate[Math.floor(Math.random() * 100)].text);
+                    hi.innerHTML = quate[Math.floor(Math.random() * 100)].text;
+                })
+        }
+        btn.addEventListener('click', getquate);
+
+    </script>
+</body>
+
+</html>
